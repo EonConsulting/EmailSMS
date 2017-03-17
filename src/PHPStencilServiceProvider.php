@@ -32,5 +32,12 @@ class PHPStencilServiceProvider extends ServiceProvider {
         $this->publishes([
             __DIR__ . '/database/migrations' => $this->app->databasePath() . '/migrations'
         ], 'migrations');
+
+
+        $this->publishes([
+            __DIR__ . '/assets' => public_path('vendor/EmailSMS'), ], 'public');
+
+        $this->publishes([
+            __DIR__ . '/assets/ckeditor' => public_path('ckeditor'), ], 'public');
     }
 }

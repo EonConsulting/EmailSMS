@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('ph::welcome')
 
 @section('content')
 

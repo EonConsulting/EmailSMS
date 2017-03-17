@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('ph::welcome')
 
 @section('content')
 
@@ -32,20 +32,20 @@
 		
 			<div class="form-group">
 				<label for="email">To:</label>
-				<input type="email" class="form-control" id="" placeholder="Enter email address" value="{{Input::old('email')}}" name="email">
+				<input type="email" class="form-control" id="" placeholder="Enter email address"  name="email">
 			</div>
 
 
 
 			<div class="form-group">   
 				<label for="subject">SubJect:</label>
-				<input type="text" class="form-control" id="subject" placeholder="Enter Subject" value="{{Input::old('subject')}}" name="subject">
+				<input type="text" class="form-control" id="subject" placeholder="Enter Subject"  name="subject">
 			</div>
 		
 			
 		<div class="form-group">
 				<label for="message">Message:</label>
-								<textarea rows="5" cols="20" class="form-control ckeditor" id="message" placeholder="Enter your Message" value="{{Input::old('message')}}" name="message">  </textarea>
+								<textarea rows="5" cols="20" class="form-control ckeditor" id="message" placeholder="Enter your Message"  name="message">  </textarea>
 			</div>
 		
 

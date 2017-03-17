@@ -25,7 +25,7 @@
 
 body{
 
-     background: url('images/background.jpeg') fixed center center;
+     background: url('vendor/EmailSMS/images/background.jpeg') fixed center center;
      background-size: cover; 
      color: #e2e2e2;
      font-weight: 300;

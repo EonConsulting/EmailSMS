@@ -4,15 +4,15 @@ namespace EONConsulting\PHPStencil\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Input;
-use App\Http\Requests\MailFormValidationRequest;
-use App\Http\Requests\SmsFormValidationRequest;
+use EONConsulting\PHPStencil\Http\Requests\MailFormValidationRequest;
+use EONConsulting\PHPStencil\Http\Requests\SmsFormValidationRequest;
 use Session;
 use Mail;
 use App\Mail\Reminder;
 use Log;
 use DB;
 use EONConsulting\LaravelLTI\Http\Controllers\LTIBaseController;
-use EONConsulting\PHPStencil\Http\Controllers\MailController;
+//use EONConsulting\PHPStencil\Http\Controllers\MailController;
 
 class MailController extends LTIBaseController
 {
