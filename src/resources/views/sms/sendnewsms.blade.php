@@ -35,7 +35,7 @@
 		
 			<div class="form-group">
 				<label for="to">To:</label>
-				<input type="number" class="form-control" id="" placeholder="Enter phone number Format: 27823377985" value="{{Input::old('to')}}" name="to">
+				<input type="number" class="form-control" id="" placeholder="Enter phone number Format: 27823377985"  name="to">
 			</div>
 
 			<!-- <div class="form-group">   
@@ -45,7 +45,7 @@
 
 			<div class="form-group">   
 				<label for="textmessage">Message:</label>
-				<textarea rows="5" cols="20" class="form-control ckeditor" id="textmessage" placeholder="Enter your Message" value="{{Input::old('textmessage')}}" name="textmessage">  </textarea>
+				<textarea rows="5" cols="20" class="form-control ckeditor" id="textmessage" placeholder="Enter your Message"  name="textmessage">  </textarea>
 			</div>
 		
 			<button type="submit" class="btn btn-primary">Submit</button>
