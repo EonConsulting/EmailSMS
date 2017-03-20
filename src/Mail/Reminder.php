@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace EONConsulting\PHPStencil\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

@@ -8,7 +8,7 @@ use EONConsulting\PHPStencil\Http\Requests\MailFormValidationRequest;
 use EONConsulting\PHPStencil\Http\Requests\SmsFormValidationRequest;
 use Session;
 use Mail;
-use App\Mail\Reminder;
+use EONConsulting\PHPStencil\Mail\Reminder;
 use Log;
 use DB;
 use EONConsulting\LaravelLTI\Http\Controllers\LTIBaseController;
@@ -61,7 +61,7 @@ if($request->has('message') && ($request->has('email')))
 {
 
 $mailer->to($request->email)
-           ->queue(new \App\Mail\Reminder($request->subject));
+           ->queue(new \EONConsulting\PHPStencil\Mail\Reminder($request->subject));
            Log::useDailyFiles(storage_path().'/logs/Emails.log');
  Log::info('Emails Sent',   ['Email Sent To'=>$request->email,
                             'Subject'=>$request->subject,
