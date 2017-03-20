@@ -6,7 +6,7 @@
 	<div class="row"> 
 	
 	<div class="col-sm-12">
-		<h1 class="text-center">Unisa Mailer App</h1>
+		<h3 class="text-center" style="color: #222222">Unisa Mailer App</h3>
 
 @if(Session::has('flashmessage'))
  
@@ -28,7 +28,7 @@
 
 				
 
-			<legend style="color: #e2e2e2;">Send an email to everyone </legend>
+			<legend style="color: #222222;">Send an email to everyone </legend>
 		
 			<div class="form-group">
 				<label for="email">To:</label>
@@ -38,7 +38,7 @@
 
 
 			<div class="form-group">   
-				<label for="subject">SubJect:</label>
+				<label for="subject">Subject:</label>
 				<input type="text" class="form-control" id="subject" placeholder="Enter Subject"  name="subject">
 			</div>
 		
@@ -49,7 +49,7 @@
 			</div>
 		
 
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" style="background: #172652 !important; border-color: #172652; color:#fff" class="btn unisa-blue-btn">Submit</button>
 {{ csrf_field() }}   
  		</form>
 	 </div>

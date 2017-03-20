@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('ph::welcome')
 
 @section('content')
 
@@ -6,7 +6,7 @@
 	<div class="row"> 
 	
 	<div class="col-sm-12">
-		<h1 class="text-center">Unisa Mailer App</h1>
+		<h3 class="text-center" style="color: #222222;">Unisa Mailer App</h3>
 
 
 
@@ -31,7 +31,7 @@
 
 		<form action="{{url('sms/bene') }}" method="POST" role="form">
 
-			<legend style="color: #e2e2e2;">Send an sms to everyone </legend>
+			<legend style="color: #222222;">Send an sms to everyone </legend>
 		
 			<div class="form-group">
 				<label for="to">To:</label>
@@ -48,7 +48,7 @@
 				<textarea rows="5" cols="20" class="form-control ckeditor" id="textmessage" placeholder="Enter your Message"  name="textmessage">  </textarea>
 			</div>
 		
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary" style="background: #F7931D !important; border-color: #F7931D; color:#fff;">Submit</button>
 {{ csrf_field() }}   
  		</form>
 	 </div>

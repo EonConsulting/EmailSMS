@@ -25,7 +25,7 @@
 
 body{
 
-     background: url('vendor/EmailSMS/images/background.jpeg') fixed center center;
+/*     background: url('vendor/EmailSMS/images/background.jpeg') fixed center center;*/
      background-size: cover; 
      color: #e2e2e2;
      font-weight: 300;
@@ -35,7 +35,17 @@ body{
 
 
 }
-    
+
+ label {color: #222222;}   
+* Buttons */
+/* Example Usage <btn class="unisa-blue-btn"> */
+.unisa-blue-btn     {background: #172652 !important; border-color: #172652; color:#fff;}
+.unisa-red-btn      {background: #930010 !important; border-color: #930010; color:#fff;}
+.unisa-black-btn    {background: #222222 !important; border-color: #222222; color:#fff;}
+.unisa-orange-btn   {background: #F7931D !important; border-color: #F7931D; color:#fff;}
+.unisa-grey-btn     {background: #777777 !important; border-color: #777777; color:#fff;}
+
+
 </style>
 
     </head>
