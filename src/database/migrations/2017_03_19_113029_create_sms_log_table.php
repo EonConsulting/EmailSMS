@@ -13,11 +13,13 @@ class CreateSmsLogTable extends Migration
      */
     public function up()
     {
-        Schema::create('sms_log', function (Blueprint $table) {
+        Schema::create('lti_sms_log', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('sent_on');
             $table->string('phone_number');
             $table->text('message');
+            $table->timestamp('updated_at');
+            $table->timestamp('created_at');
 
         });
     }
@@ -29,6 +31,6 @@ class CreateSmsLogTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sms_log');
+        Schema::dropIfExists('lti_sms_log');
     }
 }

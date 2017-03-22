@@ -1,6 +1,6 @@
 <?php
 
-namespace EONConsulting\PHPStencil\Http\Requests;
+namespace EONConsulting\EmailSMS\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

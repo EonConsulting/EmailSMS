@@ -1,11 +1,11 @@
 <?php
 
-namespace EONConsulting\PHPStencil\Mail;
+namespace EONConsulting\EmailSMS\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
+
  
 
 class Reminder extends Mailable

@@ -6,7 +6,7 @@
  * Time: 9:36 AM
  */
 
-namespace EONConsulting\PHPStencil\src\Models;
+namespace EONConsulting\EmailSMS\src\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,11 +15,11 @@ use Illuminate\Database\Eloquent\Model;
  * Class DummyTable
  * @package EONConsulting\PHPStencil\src\Models
  */
-class DummyTable extends Model {
+class EmailSMS extends Model {
 
     public $incrementing = true;
-    protected $table = 'dummy_table';
+    protected $table = 'lti_sms_log';
     protected $primaryKey = 'id';
-    protected $fillable = ['title', 'body', 'slug'];
+    protected $fillable = ['sent_on', 'phone_number', 'message'];
 
 }

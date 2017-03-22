@@ -6,29 +6,14 @@
  * Time: 9:07 AM
  */
 
-Route::group(['middleware' => ['web'],  'namespace' => 'EONConsulting\PHPStencil\Http\Controllers'], function() {
+Route::group(['middleware' => ['web'],  'namespace' => 'EONConsulting\EmailSMS\Http\Controllers'], function() {
 
         // list all of the api's
         Route::any('/test', ['as' => 'eon.test', 'uses' => 'TestStencilController@test']);
 
 
-     
-
-       
-
-
-
-
-
-        Route::match(['get', 'post'],'/', 'HomeController@index'); 
+        Route::match(['get', 'post'],'mailapp', 'HomeController@index');
 Route::match(['get', 'post'],'sms/create', 'MailController@create'); 
-
-
-
-
-
-
-
 
 Route::match(['get', 'post'],'mail/sendmail', 'MailController@sendmail');
 
@@ -44,13 +29,6 @@ Route::match(['get', 'post'],'sms/bene', 'MailController@sendsms');
 
 Route::resource('sms', 'HomeController');
 Route::match(['get', 'post'],'sms', 'HomeController@sms'); 
-
-
-
-
-
-
-
 
 
 

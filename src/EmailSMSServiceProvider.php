@@ -1,4 +1,4 @@
-<?php namespace EONConsulting\PHPStencil;
+<?php namespace EONConsulting\EmailSMS;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
  * Class PHPStencilServiceProvider
  * @package EONConsulting\EmailSMS
  */
-class PHPStencilServiceProvider extends ServiceProvider {
+class EmailSMSServiceProvider extends ServiceProvider {
 
     /**
      * Register the service provider.
@@ -14,8 +14,8 @@ class PHPStencilServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        $this->app->bind( 'phpstencil', function () {
-            return new PHPStencil();
+        $this->app->bind( 'emailsms', function () {
+            return new emailsms();
         });
     }
 
@@ -23,9 +23,8 @@ class PHPStencilServiceProvider extends ServiceProvider {
      * What to boot with the package
      */
     public function boot() {
-        $this->loadRoutesFrom(__DIR__.'/Factories/WebService/Routes/routes_rest.php');
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'phpstencil');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'emailsms');
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'ph');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 

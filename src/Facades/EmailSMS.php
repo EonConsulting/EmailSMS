@@ -6,7 +6,7 @@
  * Time: 9:02 AM
  */
 
-namespace Packages\PHPStencil\src\Facades;
+namespace Packages\EmailSMS\src\Facades;
 
 
 use Illuminate\Support\Facades\Facade;
@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Facade;
  * Class EmailSMS
  * @package Packages\EmailSMS\src\Facades
  */
-class PHPStencil extends Facade {
+class EmailSMS extends Facade {
 
     /**
      * @return string
      */
     public static function getFacadeAccessor() {
-        return 'phpstencil';
+        return 'emailsms';
     }
 
 }

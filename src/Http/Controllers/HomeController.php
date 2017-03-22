@@ -1,6 +1,6 @@
 <?php
 
-namespace EONConsulting\PHPStencil\Http\Controllers;
+namespace EONConsulting\EmailSMS\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
