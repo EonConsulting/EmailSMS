@@ -12,7 +12,8 @@ use EONConsulting\EmailSMS\Mail\Reminder;
 use Log;
 use DB;
 use EONConsulting\LaravelLTI\Http\Controllers\LTIBaseController;
-use EONConsulting\EmailSMS\src\Models\EmailSMS;
+use EONConsulting\EmailSMS\src\Models\EmailSMSModel;
+
 
 //use EONConsulting\PHPStencil\Http\Controllers\MailController;
 
@@ -66,13 +67,8 @@ class MailController extends LTIBaseController
 
         if ($request->has('message') && ($request->has('email'))) {
 
-            $mailer->to($request->email)
-                ->queue(new \EONConsulting\EmailSMS\Mail\Reminder($request->subject));
-            Log::useDailyFiles(storage_path() . '/logs/Emails.log');
-            Log::info('Emails Sent', ['Email Sent To' => $request->email,
-                'Subject' => $request->subject,
-                'Email Content' => $request->message
-            ]);
+
+            emailsms()->sendingemail($request->email, $request->subject, $request->message, $mailer);
 
             Session::flash('flashmessage', 'Email sent successfuly.');
             return redirect('mail');
@@ -91,36 +87,7 @@ class MailController extends LTIBaseController
 
         if ($request->has('textmessage') && ($request->has('to'))) {
 
-            $to = $request->to;
-            // $from = $request->from;
-            $from = '27731510003';
-            $text = $request->textmessage;
-            $date = new \DateTime;
-            $nexmo = app('Nexmo\Client');
-            $nexmo->message()->send([
-
-                'to' => $to,
-                'from' => $from,
-                'text' => $text
-
-                // return view('welcome');
-
-
-            ]);
-            // inserting the message into the database
-            $q = new EmailSMS;
-            $q->sent_on = $date;
-            $q->phone_number = $to;
-            $q->message = $text;
-            $q->save();
-
-
-// writing to the log file 
-            Log::useDailyFiles(storage_path() . '/logs/SMS.log');
-            Log::info('SMS Sent', ['SMS Sent To' => $request->to,
-                'SMS Content' => $request->textmessage
-            ]);
-
+ emailsms()->sendingsms($request->textmessage, $request->to);
 
             Session::flash('flashmessage', 'Sms sent successfuly.');
             return redirect('sms');

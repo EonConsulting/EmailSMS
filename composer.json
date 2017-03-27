@@ -14,7 +14,8 @@
       "EONConsulting\\EmailSMS\\": "src/"
     },
     "files": [
-      "src/Http/helpers.php"
+      "src/Http/helpers.php",
+      "Http/helpers.php"
     ]
   },
   "require": {

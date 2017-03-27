@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: vamoose
+ * User: bmmuffy
  * Date: 2016/11/28
  * Time: 8:50 AM
  */
@@ -9,116 +9,69 @@
 namespace EONConsulting\EmailSMS;
 
 
-use EONConsulting\PHPStencil\src\Events\CarModel;
-use EONConsulting\PHPStencil\src\Factories\AdapterFactory;
-use EONConsulting\PHPStencil\src\Factories\GUI\GUIEnum;
-use EONConsulting\PHPStencil\src\Factories\GUI\GUIFactory;
-use EONConsulting\PHPStencil\src\Factories\Text\TextEnum;
-use EONConsulting\PHPStencil\src\Factories\Text\TextFactory;
-use EONConsulting\PHPStencil\src\Factories\WebService\WebServiceEnum;
-use EONConsulting\PHPStencil\src\Factories\WebService\WebServiceFactory;
-use EONConsulting\PHPStencil\src\Observers\CarModelObserver;
-
 /**
  * Class EmailSMS
  * @package EONConsulting\EmailSMS
  */
+use Log;
+
+use EONConsulting\EmailSMS\src\Models\EmailSMSModel;
+
 class EmailSMS {
 
     /**
      * @return mixed
      */
-    public function output() {
-        // observer
-//        $event = new SayHello("Josh Harington");
-//        $event->attach(new SayHelloObserver());
-//        $event->set_name("Hey there");
-//
-//        // observer
-        $car_model = new CarModel;
-        $car_model->attach(new CarModelObserver);
-        $car_model->notify();
 
-        // factory - text
-        $factory = new TextFactory(new AdapterFactory);
-        $text = $factory->make(TextEnum::JSON);
-//
-        $xml = [
-            'folders' => [
-                ['name' => 'Folder 1', 'id' => '1', 'files' => [
-                    ['name' => 'File 1', 'id' => '1', 'type' => 'psd'],
-                    ['name' => 'File 2', 'id' => '2', 'type' => 'csv'],
-                    ['name' => 'File 3', 'id' => '3', 'type' => 'pdf'],
-                ]],
-                ['name' => 'Folder 2', 'id' => '2'],
-                ['name' => 'Folder 3', 'id' => '3', 'files' => [
-                    ['name' => 'File 1', 'id' => '1', 'type' => 'txt'],
-                    ['name' => 'File 2', 'id' => '2', 'type' => 'csv'],
-                ]],
-            ],
-            'files' => [
-                ['name' => 'My public file']
-            ]
-        ];
+    public function mailapp() {
+        return HomeController::index();
+             // return view('ph::lecturer');
+    }
+    public function sendingemail($email, $subject, $message, $mailer) {
 
-        $csv = [
-            ['Hey', 'there'],
-            ['yo', 'someone'],
-            ['Hey', 'there']
-        ];
-//
-//        $json = ['Author' => ['name' => 'Josh Harington', 'gender' => 'male', 'profession' => 'Professonal Nerd.']];
 
-        return $text->output($csv);
+                 
+                 $mailer->to($email)
+                ->queue(new \EONConsulting\EmailSMS\Mail\Reminder($subject));
+            Log::useDailyFiles(storage_path() . '/logs/Emails.log');
+            Log::info('Emails Sent', ['Email Sent To' => $email,
+                'Subject' => $subject,
+                'Email Content' => $message
+            ]);
     }
 
-    /**
-     * Render the GUI view of choice
-     * @param $type
-     * @param $data
-     * @return mixed|null
-     */
-    public function render($type = 'form', $data) {
+         public function sendingsms($textmessage, $to) {
 
-        if(($type != 'form' && $type != 'list') || !$data)
-            return null;
+                   $to = $to;
+            // $from = $request->from;
+            $from = '27731510003';
+            $text = $textmessage;
+            $date = new \DateTime;
+            $nexmo = app('Nexmo\Client');
+            $nexmo->message()->send([
 
-        switch($type) {
-            case 'form':
-                $type = GUIEnum::FORM;
-                break;
-            case 'list':
-                $type = GUIEnum::UILIST;
-                break;
-        }
+                'to' => $to,
+                'from' => $from,
+                'text' => $text
 
-        // factory - GUI
-        $factory = new GUIFactory(new AdapterFactory);
-        $gui = $factory->make($type);
+                // return view('welcome');
 
-        return $gui->render($data);
+            ]);
+            // inserting the message into the database
+            $q = new EmailSMSModel;
+            $q->sent_on = $date;
+            $q->phone_number = $to;
+            $q->message = $text;
+            $q->save();
+
+
+// writing to the log file 
+            Log::useDailyFiles(storage_path() . '/logs/SMS.log');
+            Log::info('SMS Sent', ['SMS Sent To' => $to,
+                'SMS Content' => $textmessage
+            ]);
+
     }
 
-    /**
-     * @param string $type
-     * @param $data
-     * @return mixed|null
-     */
-    public function service($type = 'rest', $data) {
-
-        if(($type != 'rest' && $type != 'soap') || !$data)
-            return null;
-
-        switch($type) {
-            case 'rest':
-                $type = WebServiceEnum::REST;
-                break;
-        }
-
-        $factory = new WebServiceFactory(new AdapterFactory);
-        $service = $factory->make($type);
-
-        return $service->output($data);
-    }
 
 }

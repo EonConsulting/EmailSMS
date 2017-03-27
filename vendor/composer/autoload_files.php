@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     '72579e7bd17821bb1321b87411366eae' => $vendorDir . '/illuminate/support/helpers.php',
     '051304be2705da9bf2eaa6525dc161cb' => $baseDir . '/src/Http/helpers.php',
+    'fb0f5350224c8b6079cd077299003c37' => $baseDir . '/Http/helpers.php',
 );

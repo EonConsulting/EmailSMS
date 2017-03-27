@@ -15,7 +15,7 @@ class EmailSMSServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app->bind( 'emailsms', function () {
-            return new emailsms();
+            return new EmailSMS;
         });
     }
 
